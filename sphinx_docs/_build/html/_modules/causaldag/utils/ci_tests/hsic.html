@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>causaldag.utils.ci_tests.hsic &mdash; conditional_independence  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> conditional_independence
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ci_tests/index.html">Conditional Independence Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../invariance_tests/index.html">Conditional Invariance Tests</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">conditional_independence</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>causaldag.utils.ci_tests.hsic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for causaldag.utils.ci_tests.hsic</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">causaldag.utils.ci_tests</span> <span class="k">import</span> <span class="n">kernels</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">gamma</span>
+<span class="kn">from</span> <span class="nn">causaldag.utils.ci_tests._utils</span> <span class="k">import</span> <span class="n">residuals</span>
+<span class="kn">from</span> <span class="nn">causaldag.utils.core_utils</span> <span class="k">import</span> <span class="n">to_list</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">gdtr</span>
+<span class="kn">import</span> <span class="nn">ipdb</span>
+<span class="kn">import</span> <span class="nn">numexpr</span> <span class="k">as</span> <span class="nn">ne</span>
+
+
+<span class="k">def</span> <span class="nf">hsic_test_vector</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">sig</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test for independence of X and Y using the Hilbert-Schmidt Information Criterion.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x:</span>
+<span class="sd">        vector of samples from X.</span>
+<span class="sd">    y:</span>
+<span class="sd">        vector of samples from Y.</span>
+<span class="sd">    sig:</span>
+<span class="sd">        width parameter.</span>
+<span class="sd">    alpha:</span>
+<span class="sd">        significance level.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Y should have the same number of samples as X&quot;</span><span class="p">)</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">kernel_precision</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sig</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># === COMPUTE CENTRALIZED KERNEL MATRICES</span>
+    <span class="n">kx</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">rbf_kernel_fast</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kernel_precision</span><span class="p">)</span>
+    <span class="n">ky</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">rbf_kernel_fast</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">kernel_precision</span><span class="p">)</span>
+    <span class="n">kx_off_diag_sum</span> <span class="o">=</span> <span class="n">kx</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">kx</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+    <span class="n">ky_off_diag_sum</span> <span class="o">=</span> <span class="n">ky</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">ky</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+    <span class="n">kx_centered</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">center_fast_mutate</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span>
+    <span class="n">ky_centered</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">center_fast_mutate</span><span class="p">(</span><span class="n">ky</span><span class="p">)</span>
+
+    <span class="c1"># === COMPUTE STATISTIC</span>
+    <span class="n">statistic</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ne</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s1">&#39;sum(a * b)&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">kx_centered</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ky_centered</span><span class="p">})</span>  <span class="c1"># SAME AS trace(kx_centered @ ky_centered)</span>
+
+    <span class="c1"># Theorem 3</span>
+    <span class="n">mu_x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">kx_off_diag_sum</span>
+    <span class="n">mu_y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">ky_off_diag_sum</span>
+    <span class="n">mean_approx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">mu_x</span><span class="o">*</span><span class="n">mu_y</span> <span class="o">-</span> <span class="n">mu_x</span> <span class="o">-</span> <span class="n">mu_y</span><span class="p">)</span>
+    <span class="c1"># Theorem 4</span>
+    <span class="n">var_coef</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">kx_centered</span> <span class="o">*</span> <span class="n">ky_centered</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">var_approx</span> <span class="o">=</span> <span class="n">var_coef</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">B</span><span class="p">))</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">mean_approx</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">var_approx</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">var_approx</span> <span class="o">/</span> <span class="n">mean_approx</span>
+
+    <span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">gdtr</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">beta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">statistic</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">statistic</span><span class="o">=</span><span class="n">statistic</span><span class="p">,</span>
+        <span class="n">p_value</span><span class="o">=</span><span class="n">p_value</span><span class="p">,</span>
+        <span class="n">reject</span><span class="o">=</span><span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">,</span>
+        <span class="n">mean_approx</span><span class="o">=</span><span class="n">mean_approx</span><span class="p">,</span>
+        <span class="n">var_approx</span><span class="o">=</span><span class="n">var_approx</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="hsic_test"><a class="viewcode-back" href="../../../../ci_tests/generated/conditional_independence.hsic_test.html#conditional_independence.hsic_test">[docs]</a><span class="k">def</span> <span class="nf">hsic_test</span><span class="p">(</span>
+        <span class="n">suffstat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">j</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">cond_set</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test for (conditional) independence using the Hilbert-Schmidt Information Criterion. If a conditioning set is</span>
+<span class="sd">    specified, first perform non-parametric regression, then test residuals.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    suffstat:</span>
+<span class="sd">        Matrix of samples.</span>
+<span class="sd">    i:</span>
+<span class="sd">        column position of first variable.</span>
+<span class="sd">    j:</span>
+<span class="sd">        column position of second variable.</span>
+<span class="sd">    cond_set:</span>
+<span class="sd">        column positions of conditioning set.</span>
+<span class="sd">    alpha:</span>
+<span class="sd">        Significance level of the test.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cond_set</span> <span class="o">=</span> <span class="n">to_list</span><span class="p">(</span><span class="n">cond_set</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond_set</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">hsic_test_vector</span><span class="p">(</span><span class="n">suffstat</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">suffstat</span><span class="p">[:,</span> <span class="n">j</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">residuals_i</span><span class="p">,</span> <span class="n">residuals_j</span> <span class="o">=</span> <span class="n">residuals</span><span class="p">(</span><span class="n">suffstat</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cond_set</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">hsic_test_vector</span><span class="p">(</span><span class="n">residuals_i</span><span class="p">,</span> <span class="n">residuals_j</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">from</span> <span class="nn">line_profiler</span> <span class="k">import</span> <span class="n">LineProfiler</span>
+
+    <span class="n">lp</span> <span class="o">=</span> <span class="n">LineProfiler</span><span class="p">()</span>
+
+    <span class="n">lp</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">hsic_test_vector</span><span class="p">)</span>
+    <span class="n">lp</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">kernels</span><span class="o">.</span><span class="n">center_fast_mutate</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">laplace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">laplace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="n">lp</span><span class="o">.</span><span class="n">runcall</span><span class="p">(</span><span class="n">hsic_test_vector</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">)</span>
+    <span class="n">lp</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, Chandler Squires.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
