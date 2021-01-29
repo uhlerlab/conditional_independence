@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>causaldag.utils.ci_tests.kci &mdash; conditional_independence  documentation</title>
+  <title>conditional_independence.ci_tests.nonparametric.kci &mdash; conditional_independence  documentation</title>
   
 
   
@@ -136,7 +136,7 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-      <li>causaldag.utils.ci_tests.kci</li>
+      <li>conditional_independence.ci_tests.nonparametric.kci</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -151,15 +151,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for causaldag.utils.ci_tests.kci</h1><div class="highlight"><pre>
+  <h1>Source code for conditional_independence.ci_tests.nonparametric.kci</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">scale</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="k">import</span> <span class="n">euclidean_distances</span>
 <span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">itr</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">gamma</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">causaldag.utils.ci_tests</span> <span class="k">import</span> <span class="n">kernels</span>
-<span class="kn">from</span> <span class="nn">causaldag.utils.ci_tests._utils</span> <span class="k">import</span> <span class="n">residuals</span>
+<span class="kn">from</span> <span class="nn">...utils</span> <span class="k">import</span> <span class="n">kernels</span>
+<span class="kn">from</span> <span class="nn">...utils</span> <span class="k">import</span> <span class="n">residuals</span>
 
 
 <span class="k">def</span> <span class="nf">ki_test_vector</span><span class="p">(</span>

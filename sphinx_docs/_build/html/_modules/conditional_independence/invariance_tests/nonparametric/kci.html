@@ -153,9 +153,8 @@
             
   <h1>Source code for conditional_independence.invariance_tests.nonparametric.kci</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span>
-<span class="kn">from</span> <span class="nn">conditional_independence.utils</span> <span class="k">import</span> <span class="n">combined_mat</span>
-<span class="kn">from</span> <span class="nn">causaldag.utils.ci_tests</span> <span class="k">import</span> <span class="n">kci_test</span>
-<span class="kn">from</span> <span class="nn">causaldag.utils.core_utils</span> <span class="k">import</span> <span class="n">to_list</span>
+<span class="kn">from</span> <span class="nn">conditional_independence.utils</span> <span class="k">import</span> <span class="n">combined_mat</span><span class="p">,</span> <span class="n">to_list</span>
+<span class="kn">from</span> <span class="nn">...ci_tests</span> <span class="k">import</span> <span class="n">kci_test</span>
 
 
 <div class="viewcode-block" id="kci_invariance_test"><a class="viewcode-back" href="../../../../invariance_tests/generated/conditional_independence.kci_invariance_test.html#conditional_independence.kci_invariance_test">[docs]</a><span class="k">def</span> <span class="nf">kci_invariance_test</span><span class="p">(</span>

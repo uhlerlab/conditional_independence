@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>causaldag.utils.ci_tests.hsic &mdash; conditional_independence  documentation</title>
+  <title>conditional_independence.ci_tests.nonparametric.hsic &mdash; conditional_independence  documentation</title>
   
 
   
@@ -136,7 +136,7 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-      <li>causaldag.utils.ci_tests.hsic</li>
+      <li>conditional_independence.ci_tests.nonparametric.hsic</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -151,13 +151,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for causaldag.utils.ci_tests.hsic</h1><div class="highlight"><pre>
+  <h1>Source code for conditional_independence.ci_tests.nonparametric.hsic</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">causaldag.utils.ci_tests</span> <span class="k">import</span> <span class="n">kernels</span>
+<span class="kn">from</span> <span class="nn">...utils.kernels</span> <span class="k">import</span> <span class="n">rbf_kernel</span><span class="p">,</span> <span class="n">center_fast_mutate</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">gamma</span>
-<span class="kn">from</span> <span class="nn">causaldag.utils.ci_tests._utils</span> <span class="k">import</span> <span class="n">residuals</span>
-<span class="kn">from</span> <span class="nn">causaldag.utils.core_utils</span> <span class="k">import</span> <span class="n">to_list</span>
+<span class="kn">from</span> <span class="nn">...utils</span> <span class="k">import</span> <span class="n">residuals</span>
+<span class="kn">from</span> <span class="nn">...utils</span> <span class="k">import</span> <span class="n">to_list</span>
 <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">gdtr</span>
 <span class="kn">import</span> <span class="nn">ipdb</span>
 <span class="kn">import</span> <span class="nn">numexpr</span> <span class="k">as</span> <span class="nn">ne</span>
@@ -199,12 +199,12 @@
     <span class="n">kernel_precision</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sig</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="c1"># === COMPUTE CENTRALIZED KERNEL MATRICES</span>
-    <span class="n">kx</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">rbf_kernel_fast</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kernel_precision</span><span class="p">)</span>
-    <span class="n">ky</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">rbf_kernel_fast</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">kernel_precision</span><span class="p">)</span>
+    <span class="n">kx</span> <span class="o">=</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kernel_precision</span><span class="p">)</span>
+    <span class="n">ky</span> <span class="o">=</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">kernel_precision</span><span class="p">)</span>
     <span class="n">kx_off_diag_sum</span> <span class="o">=</span> <span class="n">kx</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">kx</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
     <span class="n">ky_off_diag_sum</span> <span class="o">=</span> <span class="n">ky</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">ky</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
-    <span class="n">kx_centered</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">center_fast_mutate</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span>
-    <span class="n">ky_centered</span> <span class="o">=</span> <span class="n">kernels</span><span class="o">.</span><span class="n">center_fast_mutate</span><span class="p">(</span><span class="n">ky</span><span class="p">)</span>
+    <span class="n">kx_centered</span> <span class="o">=</span> <span class="n">center_fast_mutate</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span>
+    <span class="n">ky_centered</span> <span class="o">=</span> <span class="n">center_fast_mutate</span><span class="p">(</span><span class="n">ky</span><span class="p">)</span>
 
     <span class="c1"># === COMPUTE STATISTIC</span>
     <span class="n">statistic</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ne</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s1">&#39;sum(a * b)&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">kx_centered</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ky_centered</span><span class="p">})</span>  <span class="c1"># SAME AS trace(kx_centered @ ky_centered)</span>
@@ -275,7 +275,7 @@
     <span class="n">lp</span> <span class="o">=</span> <span class="n">LineProfiler</span><span class="p">()</span>
 
     <span class="n">lp</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">hsic_test_vector</span><span class="p">)</span>
-    <span class="n">lp</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">kernels</span><span class="o">.</span><span class="n">center_fast_mutate</span><span class="p">)</span>
+    <span class="n">lp</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">center_fast_mutate</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">laplace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
         <span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">laplace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>

@@ -6,9 +6,16 @@ Conditional Invariance Tests
 
 .. currentmodule:: conditional_independence
 
-==========
-Parametric
-==========
+=======
+Testers
+=======
+
+.. autoclass:: InvarianceTester
+.. autoclass:: MemoizedInvarianceTester
+
+===========================
+Parametric Invariance Tests
+===========================
 
 .. autosummary::
    :toctree: generated
@@ -16,9 +23,9 @@ Parametric
    gauss_invariance_suffstat
    gauss_invariance_test
 
-==============
-Non-Parametric
-==============
+===============================
+Non-Parametric Invariance Tests
+===============================
 
 .. autosummary::
    :toctree: generated

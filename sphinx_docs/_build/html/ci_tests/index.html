@@ -87,13 +87,14 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Conditional Independence Tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#parametric">Parametric</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#testers">Testers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parametric-tests">Parametric Tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.partial_correlation_suffstat.html">conditional_independence.partial_correlation_suffstat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.partial_correlation_test.html">conditional_independence.partial_correlation_test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.compute_partial_correlation.html">conditional_independence.compute_partial_correlation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#non-parametric">Non-Parametric</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#non-parametric-tests">Non-Parametric Tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.hsic_test.html">conditional_independence.hsic_test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.kci_test.html">conditional_independence.kci_test</a></li>
 </ul>
@@ -170,8 +171,26 @@
             
   <div class="section" id="conditional-independence-tests">
 <span id="ci-tests"></span><h1>Conditional Independence Tests<a class="headerlink" href="#conditional-independence-tests" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="parametric">
-<h2>Parametric<a class="headerlink" href="#parametric" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="testers">
+<h2>Testers<a class="headerlink" href="#testers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="conditional_independence.CI_Tester">
+<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">CI_Tester</code><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#CI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.CI_Tester" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="conditional_independence.MemoizedCI_Tester">
+<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">MemoizedCI_Tester</code><span class="sig-paren">(</span><em>ci_test: NewType.&lt;locals&gt;.new_type, suffstat: Dict[KT, VT], track_times=False, detailed=False, **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#MemoizedCI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.MemoizedCI_Tester" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="conditional_independence.PlainCI_Tester">
+<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">PlainCI_Tester</code><span class="sig-paren">(</span><em>ci_test: NewType.&lt;locals&gt;.new_type, suffstat: Dict[KT, VT], **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#PlainCI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.PlainCI_Tester" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="parametric-tests">
+<h2>Parametric Tests<a class="headerlink" href="#parametric-tests" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -190,8 +209,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="non-parametric">
-<h2>Non-Parametric<a class="headerlink" href="#non-parametric" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="non-parametric-tests">
+<h2>Non-Parametric Tests<a class="headerlink" href="#non-parametric-tests" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />

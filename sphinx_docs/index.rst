@@ -2,7 +2,7 @@ Welcome to conditional_independence's documentation!
 ====================================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    ci_tests/index
    invariance_tests/index

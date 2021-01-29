@@ -88,12 +88,13 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../ci_tests/index.html">Conditional Independence Tests</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Conditional Invariance Tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#parametric">Parametric</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#testers">Testers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parametric-invariance-tests">Parametric Invariance Tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.gauss_invariance_suffstat.html">conditional_independence.gauss_invariance_suffstat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.gauss_invariance_test.html">conditional_independence.gauss_invariance_test</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#non-parametric">Non-Parametric</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#non-parametric-invariance-tests">Non-Parametric Invariance Tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.hsic_invariance_test.html">conditional_independence.hsic_invariance_test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.kci_invariance_test.html">conditional_independence.kci_invariance_test</a></li>
 </ul>
@@ -169,8 +170,21 @@
             
   <div class="section" id="conditional-invariance-tests">
 <span id="invariance-tests"></span><h1>Conditional Invariance Tests<a class="headerlink" href="#conditional-invariance-tests" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="parametric">
-<h2>Parametric<a class="headerlink" href="#parametric" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="testers">
+<h2>Testers<a class="headerlink" href="#testers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="conditional_independence.InvarianceTester">
+<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">InvarianceTester</code><a class="reference internal" href="../_modules/conditional_independence/invariance_tests/invariance_tester.html#InvarianceTester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.InvarianceTester" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="conditional_independence.MemoizedInvarianceTester">
+<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">MemoizedInvarianceTester</code><span class="sig-paren">(</span><em>invariance_test: NewType.&lt;locals&gt;.new_type, suffstat: Dict[KT, VT], track_times=False, detailed=False, **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conditional_independence/invariance_tests/invariance_tester.html#MemoizedInvarianceTester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.MemoizedInvarianceTester" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="parametric-invariance-tests">
+<h2>Parametric Invariance Tests<a class="headerlink" href="#parametric-invariance-tests" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -186,8 +200,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="non-parametric">
-<h2>Non-Parametric<a class="headerlink" href="#non-parametric" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="non-parametric-invariance-tests">
+<h2>Non-Parametric Invariance Tests<a class="headerlink" href="#non-parametric-invariance-tests" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
