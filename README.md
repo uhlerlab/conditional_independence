@@ -9,7 +9,7 @@ $ pip3 install conditional_independence
 ```
 
 ### Documentation
-Documentation is available at https://causaldag.readthedocs.io/en/latest/index.html
+Documentation is available at https://conditional-independence.readthedocs.io/en/latest/
 
 
 ### Simple Example
