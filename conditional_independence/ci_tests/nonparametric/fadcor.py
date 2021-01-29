@@ -1,8 +1,8 @@
 import numpy as np
 import ipdb
 from typing import Union, List, Dict
-from causaldag.utils.ci_tests._utils import residuals
-from causaldag.utils.core_utils import to_list
+from ...utils import residuals
+from ...utils import to_list
 
 
 def order_vector(x) -> np.ndarray:

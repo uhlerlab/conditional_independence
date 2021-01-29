@@ -1,8 +1,7 @@
 from typing import Union, List, Optional
 import numpy as np
-from causaldag.utils.core_utils import to_list
-from conditional_independence.utils import combined_mat
-from causaldag.utils.ci_tests.hsic import hsic_test
+from conditional_independence.utils import combined_mat, to_list
+from conditional_independence.ci_tests.nonparametric.hsic import hsic_test
 
 
 def hsic_invariance_test(

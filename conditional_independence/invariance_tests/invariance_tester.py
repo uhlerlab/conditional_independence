@@ -1,6 +1,6 @@
 from typing import NewType, Callable, Dict, Any, Set
 import time
-from causaldag.utils.core_utils import to_set
+from ..utils import to_set
 
 InvarianceTest = NewType('InvarianceTest', Callable[[Dict, Any, Any, Set], Dict])
 

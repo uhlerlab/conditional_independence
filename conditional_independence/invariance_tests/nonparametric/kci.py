@@ -1,7 +1,6 @@
 from typing import Union, List, Optional, Dict
-from conditional_independence.utils import combined_mat
-from causaldag.utils.ci_tests import kci_test
-from causaldag.utils.core_utils import to_list
+from conditional_independence.utils import combined_mat, to_list
+from ...ci_tests import kci_test
 
 
 def kci_invariance_test(

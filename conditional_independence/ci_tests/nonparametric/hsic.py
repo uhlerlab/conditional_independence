@@ -1,9 +1,9 @@
 from typing import Union, List, Dict
 import numpy as np
-from causaldag.utils.ci_tests import kernels
+from ...utils.kernels import rbf_kernel, center_fast_mutate
 from scipy.stats import gamma
-from causaldag.utils.ci_tests._utils import residuals
-from causaldag.utils.core_utils import to_list
+from ...utils import residuals
+from ...utils import to_list
 from scipy.special import gdtr
 import ipdb
 import numexpr as ne
@@ -45,12 +45,12 @@ def hsic_test_vector(
     kernel_precision = 1/(sig**2)
 
     # === COMPUTE CENTRALIZED KERNEL MATRICES
-    kx = kernels.rbf_kernel_fast(x, kernel_precision)
-    ky = kernels.rbf_kernel_fast(y, kernel_precision)
+    kx = rbf_kernel(x, kernel_precision)
+    ky = rbf_kernel(y, kernel_precision)
     kx_off_diag_sum = kx.sum() - kx.trace()
     ky_off_diag_sum = ky.sum() - ky.trace()
-    kx_centered = kernels.center_fast_mutate(kx)
-    ky_centered = kernels.center_fast_mutate(ky)
+    kx_centered = center_fast_mutate(kx)
+    ky_centered = center_fast_mutate(ky)
 
     # === COMPUTE STATISTIC
     statistic = 1/n**2 * ne.evaluate('sum(a * b)', {'a': kx_centered, 'b': ky_centered})  # SAME AS trace(kx_centered @ ky_centered)
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     lp = LineProfiler()
 
     lp.add_function(hsic_test_vector)
-    lp.add_function(kernels.center_fast_mutate)
+    lp.add_function(center_fast_mutate)
     for _ in range(10):
         X1 = np.random.laplace(0, 1, size=1000)
         X2 = np.random.laplace(0, 1, size=1000)

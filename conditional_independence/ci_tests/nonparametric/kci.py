@@ -4,8 +4,8 @@ from sklearn.metrics.pairwise import euclidean_distances
 import itertools as itr
 from scipy.stats import gamma
 from typing import Dict, Union, List
-from causaldag.utils.ci_tests import kernels
-from causaldag.utils.ci_tests._utils import residuals
+from ...utils import kernels
+from ...utils import residuals
 
 
 def ki_test_vector(

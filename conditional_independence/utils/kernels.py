@@ -4,7 +4,7 @@ from scipy.linalg.blas import sgemm
 import numexpr as ne
 
 
-def rbf_kernel_fast(X, precision):
+def rbf_kernel(X, precision):
     gamma = precision / 2
     X_norm = -gamma * np.einsum('ij,ij->i', X, X)
     return ne.evaluate('exp(A + B + C)', {

@@ -2,6 +2,28 @@ import numpy as np
 import pygam
 
 
+def to_set(o) -> set:
+    if not isinstance(o, set):
+        try:
+            return set(o)
+        except TypeError:
+            if o is None:
+                return set()
+            return {o}
+    return o
+
+
+def to_list(o):
+    if not isinstance(o, list):
+        try:
+            return list(o)
+        except TypeError:
+            if o is None:
+                return []
+            return [o]
+    return o
+
+
 def residuals(samples: np.ndarray, i, j, cond_set):
     cond_set = list(cond_set)
     g = pygam.GAM()
