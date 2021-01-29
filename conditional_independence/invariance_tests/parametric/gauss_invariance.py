@@ -1,6 +1,6 @@
 import numpy as np
 from typing import Union, List, Optional
-from causaldag.utils.core_utils import to_list
+from ...utils import to_list
 from scipy.special import stdtr, ncfdtr
 from numpy.linalg import pinv
 

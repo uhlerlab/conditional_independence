@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='conditional_independence',
-    version='0.1a.001',
+    version='0.1a.002',
     description='Parametric and non-parametric conditional independence tests.',
     long_description='',
     author='Chandler Squires',
@@ -20,18 +20,13 @@ setuptools.setup(
         'dataclasses',
         'numpy',
         # 'scikit_sparse',
-        'matplotlib',
         'numexpr',
-        'pandas',
         'scikit_learn',
         'typing',
         'pygam',
         'tqdm',
         'numba',
-        'networkx',
-        'joblib',
         'ipdb',
-        'frozendict'
     ]
 )
 
