@@ -15,7 +15,19 @@ Documentation is available at https://conditional-independence.readthedocs.io/en
 ### Simple Example
 
 ```
->>> import conditional_independence
+>>> from conditional_independence import partial_correlation_suffstat, partial_correlation_test
+>>> import numpy as np
+>>> np.random.seed(121122)
+>>> samples = np.random.normal(size=(100, 3))
+>>> suffstat = partial_correlation_suffstat(samples)
+>>> partial_correlation_test(suffstat, 0, 1)
+{'statistic': 0.5671513111036371,
+ 'p_value': 0.5706113842986253,
+ 'reject': False}
+>>> partial_correlation_test(suffstat, 0, 1, {2})
+{'statistic': 0.6879909848126664,
+ 'p_value': 0.4914584585239892,
+ 'reject': False}
 ```
 
 ### License
