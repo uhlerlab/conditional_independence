@@ -4,7 +4,7 @@
 Conditional Independence Tests
 ******************************
 
-.. currentmodule:: conditional_independence
+.. currentmodule:: conditional_independence.ci_tests.ci_tester
 
 =======
 Testers
@@ -18,6 +18,7 @@ Testers
 Parametric Tests
 ================
 
+.. currentmodule:: conditional_independence.ci_tests.parametric.partial_correlation_test
 .. autosummary::
    :toctree: generated
 
@@ -29,8 +30,3 @@ Parametric Tests
 Non-Parametric Tests
 ====================
 
-.. autosummary::
-   :toctree: generated
-
-   hsic_test
-   kci_test

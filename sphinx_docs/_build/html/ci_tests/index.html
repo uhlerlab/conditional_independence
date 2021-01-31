@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -29,17 +29,16 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="conditional_independence.partial_correlation_suffstat" href="generated/conditional_independence.partial_correlation_suffstat.html" />
+    <link rel="next" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html" />
     <link rel="prev" title="Welcome to conditional_independence’s documentation!" href="../index.html" /> 
 </head>
 
@@ -89,16 +88,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Conditional Independence Tests</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#testers">Testers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#parametric-tests">Parametric Tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.partial_correlation_suffstat.html">conditional_independence.partial_correlation_suffstat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.partial_correlation_test.html">conditional_independence.partial_correlation_test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.compute_partial_correlation.html">conditional_independence.compute_partial_correlation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html">conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test.html">conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation.html">conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#non-parametric-tests">Non-Parametric Tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.hsic_test.html">conditional_independence.hsic_test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.kci_test.html">conditional_independence.kci_test</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#non-parametric-tests">Non-Parametric Tests</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../invariance_tests/index.html">Conditional Invariance Tests</a></li>
@@ -173,58 +168,44 @@
 <span id="ci-tests"></span><h1>Conditional Independence Tests<a class="headerlink" href="#conditional-independence-tests" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="testers">
 <h2>Testers<a class="headerlink" href="#testers" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="conditional_independence.CI_Tester">
-<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">CI_Tester</code><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#CI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.CI_Tester" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt id="conditional_independence.ci_tests.ci_tester.CI_Tester">
+<em class="property">class </em><code class="sig-prename descclassname">conditional_independence.ci_tests.ci_tester.</code><code class="sig-name descname">CI_Tester</code><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#CI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.ci_tests.ci_tester.CI_Tester" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="class">
-<dt id="conditional_independence.MemoizedCI_Tester">
-<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">MemoizedCI_Tester</code><span class="sig-paren">(</span><em>ci_test: NewType.&lt;locals&gt;.new_type, suffstat: Dict[KT, VT], track_times=False, detailed=False, **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#MemoizedCI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.MemoizedCI_Tester" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt id="conditional_independence.ci_tests.ci_tester.MemoizedCI_Tester">
+<em class="property">class </em><code class="sig-prename descclassname">conditional_independence.ci_tests.ci_tester.</code><code class="sig-name descname">MemoizedCI_Tester</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ci_test</span><span class="p">:</span> <span class="n">CI_Test</span></em>, <em class="sig-param"><span class="n">suffstat</span><span class="p">:</span> <span class="n">Dict</span></em>, <em class="sig-param"><span class="n">track_times</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">detailed</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#MemoizedCI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.ci_tests.ci_tester.MemoizedCI_Tester" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="class">
-<dt id="conditional_independence.PlainCI_Tester">
-<em class="property">class </em><code class="descclassname">conditional_independence.</code><code class="descname">PlainCI_Tester</code><span class="sig-paren">(</span><em>ci_test: NewType.&lt;locals&gt;.new_type, suffstat: Dict[KT, VT], **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#PlainCI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.PlainCI_Tester" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt id="conditional_independence.ci_tests.ci_tester.PlainCI_Tester">
+<em class="property">class </em><code class="sig-prename descclassname">conditional_independence.ci_tests.ci_tester.</code><code class="sig-name descname">PlainCI_Tester</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ci_test</span><span class="p">:</span> <span class="n">CI_Test</span></em>, <em class="sig-param"><span class="n">suffstat</span><span class="p">:</span> <span class="n">Dict</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conditional_independence/ci_tests/ci_tester.html#PlainCI_Tester"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.ci_tests.ci_tester.PlainCI_Tester" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="section" id="parametric-tests">
 <h2>Parametric Tests<a class="headerlink" href="#parametric-tests" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/conditional_independence.partial_correlation_suffstat.html#conditional_independence.partial_correlation_suffstat" title="conditional_independence.partial_correlation_suffstat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_suffstat</span></code></a>(samples[,&nbsp;invert])</td>
-<td>Return the sufficient statistics for partial correlation testing.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_suffstat</span></code></a>(samples[, invert])</p></td>
+<td><p>Return the sufficient statistics for partial correlation testing.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/conditional_independence.partial_correlation_test.html#conditional_independence.partial_correlation_test" title="conditional_independence.partial_correlation_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_test</span></code></a>(suffstat,&nbsp;VT],&nbsp;i,&nbsp;j)</td>
-<td>Test the null hypothesis that i and j are conditionally independent given <code class="docutils literal notranslate"><span class="pre">cond_set</span></code>.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_test</span></code></a>(suffstat, i, j[, …])</p></td>
+<td><p>Test the null hypothesis that i and j are conditionally independent given <code class="docutils literal notranslate"><span class="pre">cond_set</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/conditional_independence.compute_partial_correlation.html#conditional_independence.compute_partial_correlation" title="conditional_independence.compute_partial_correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_partial_correlation</span></code></a>(suffstat,&nbsp;i,&nbsp;j)</td>
-<td>Compute the partial correlation between i and j given <code class="docutils literal notranslate"><span class="pre">cond_set</span></code>.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation.html#conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation" title="conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_partial_correlation</span></code></a>(suffstat, i, j)</p></td>
+<td><p>Compute the partial correlation between i and j given <code class="docutils literal notranslate"><span class="pre">cond_set</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="non-parametric-tests">
 <h2>Non-Parametric Tests<a class="headerlink" href="#non-parametric-tests" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/conditional_independence.hsic_test.html#conditional_independence.hsic_test" title="conditional_independence.hsic_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hsic_test</span></code></a>(suffstat,&nbsp;i,&nbsp;j,&nbsp;cond_set,&nbsp;…)</td>
-<td>Test for (conditional) independence using the Hilbert-Schmidt Information Criterion.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/conditional_independence.kci_test.html#conditional_independence.kci_test" title="conditional_independence.kci_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kci_test</span></code></a>(suffstat,&nbsp;i,&nbsp;j,&nbsp;cond_set,&nbsp;…)</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 
@@ -234,7 +215,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="generated/conditional_independence.partial_correlation_suffstat.html" class="btn btn-neutral float-right" title="conditional_independence.partial_correlation_suffstat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html" class="btn btn-neutral float-right" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to conditional_independence’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
@@ -242,7 +223,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2019, Chandler Squires.
+        &#169; Copyright 2021, Chandler Squires.
 
     </p>
   </div>

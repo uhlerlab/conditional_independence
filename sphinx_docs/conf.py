@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath(os.path.join('..')))
 # -- Project information -----------------------------------------------------
 
 project = 'conditional_independence'
-copyright = '2019, Chandler Squires'
+copyright = '2021, Chandler Squires'
 author = 'Chandler Squires'
 
 # The short X.Y version
@@ -118,7 +118,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'causaldagdoc'
+htmlhelp_basename = 'conditional_independencedoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------

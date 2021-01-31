@@ -1,6 +1,5 @@
 from typing import Dict
 from math import erf
-import numba
 from numpy import sqrt, log1p, abs, ix_, diag, corrcoef, errstate, cov, mean
 from numpy.linalg import inv, pinv
 # from . import MemoizedCI_Tester
@@ -13,7 +12,6 @@ __all__ = [
 ]
 
 
-@numba.jit
 def numba_inv(A):
     return inv(A)
 

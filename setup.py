@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='conditional_independence',
-    version='0.1a.002',
+    version='0.1a.003',
     description='Parametric and non-parametric conditional independence tests.',
     long_description='',
     author='Chandler Squires',
@@ -25,7 +25,7 @@ setuptools.setup(
         'typing',
         'pygam',
         'tqdm',
-        'numba',
+        # 'numba',
         'ipdb',
     ]
 )
