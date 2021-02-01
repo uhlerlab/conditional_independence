@@ -13,7 +13,7 @@ python: 3.8
 # Install the codecov pip dependency
 install:
   - pip install codecov
-  - pip install numpy numexpr tqdm pygam scikit-learn
+  - pip install numpy numexpr tqdm pygam scikit-learn ipdb
 
 # Run the unit test
 script:
