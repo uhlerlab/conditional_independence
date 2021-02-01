@@ -15,7 +15,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join('..')))
-from conditional_independence import *
+# from conditional_independence import *
 
 
 # -- Project information -----------------------------------------------------
