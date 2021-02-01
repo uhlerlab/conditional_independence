@@ -14,7 +14,7 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath(os.path.join('..')))
+# sys.path.insert(0, os.path.abspath(os.path.join('..')))
 # from conditional_independence import *
 
 
@@ -49,13 +49,13 @@ extensions = [
 
 autosummary_generate = True
 autodoc_mock_imports = [
-    'numpy',
-    'pandas',
-    'scipy',
-    'matplotlib',
-    'dataclasses',
-    'sklearn',
-    'numba'
+    # 'numpy',
+    # 'pandas',
+    # 'scipy',
+    # 'matplotlib',
+    # 'dataclasses',
+    # 'sklearn',
+    # 'numba'
 ]
 latex_paper_size = 'letter'
 
