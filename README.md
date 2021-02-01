@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/uhlerlab/conditional_independence.svg?branch=main)](https://travis-ci.com/uhlerlab/conditional_independence)
-[![codecov](https://codecov.io/gh/uhlerlab/causaldag/branch/master/graph/badge.svg?token=RSM00FKU9A)](https://codecov.io/gh/uhlerlab/causaldag)
+[![codecov](https://codecov.io/gh/uhlerlab/conditional_independence/branch/main/graph/badge.svg?token=TC78IEMINI)](https://codecov.io/gh/uhlerlab/conditional_independence)
 
 `conditional_independence` is a Python package for conditional independence testing.
 
