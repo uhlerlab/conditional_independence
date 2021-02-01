@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>conditional_independence.ci_tests.parametric.partial_correlation_test &mdash; conditional_independence  documentation</title>
   
@@ -16,10 +16,7 @@
 
   
   
-
   
-  
-
   
 
   
@@ -51,7 +48,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home"> conditional_independence
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> conditional_independence
           
 
           
@@ -125,8 +122,6 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -153,7 +148,6 @@
   <h1>Source code for conditional_independence.ci_tests.parametric.partial_correlation_test</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">erf</span>
-<span class="kn">import</span> <span class="nn">numba</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log1p</span><span class="p">,</span> <span class="nb">abs</span><span class="p">,</span> <span class="n">ix_</span><span class="p">,</span> <span class="n">diag</span><span class="p">,</span> <span class="n">corrcoef</span><span class="p">,</span> <span class="n">errstate</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">mean</span>
 <span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">inv</span><span class="p">,</span> <span class="n">pinv</span>
 <span class="c1"># from . import MemoizedCI_Tester</span>
@@ -166,7 +160,6 @@
 <span class="p">]</span>
 
 
-<span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span>
 <span class="k">def</span> <span class="nf">numba_inv</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
@@ -358,25 +351,28 @@
            
           </div>
           <footer>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Chandler Squires.
+        
+        &copy; Copyright 2021, Chandler Squires
 
     </p>
   </div>
     
     
     
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
