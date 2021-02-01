@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Conditional Independence Tests &mdash; conditional_independence  documentation</title>
   
@@ -16,10 +16,7 @@
 
   
   
-
   
-  
-
   
 
   
@@ -38,7 +35,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html" />
+    <link rel="next" title="conditional_independence.partial_correlation_suffstat" href="generated/conditional_independence.partial_correlation_suffstat.html" />
     <link rel="prev" title="Welcome to conditional_independence’s documentation!" href="../index.html" /> 
 </head>
 
@@ -53,7 +50,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> conditional_independence
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> conditional_independence
           
 
           
@@ -88,12 +85,16 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Conditional Independence Tests</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#testers">Testers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#parametric-tests">Parametric Tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html">conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test.html">conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation.html">conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.partial_correlation_suffstat.html">conditional_independence.partial_correlation_suffstat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.partial_correlation_test.html">conditional_independence.partial_correlation_test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.compute_partial_correlation.html">conditional_independence.compute_partial_correlation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#non-parametric-tests">Non-Parametric Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#non-parametric-tests">Non-Parametric Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.hsic_test.html">conditional_independence.hsic_test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/conditional_independence.kci_test.html">conditional_independence.kci_test</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../invariance_tests/index.html">Conditional Invariance Tests</a></li>
@@ -137,8 +138,6 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -150,7 +149,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/ci_tests/index.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -192,13 +191,13 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_suffstat</span></code></a>(samples[, invert])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/conditional_independence.partial_correlation_suffstat.html#conditional_independence.partial_correlation_suffstat" title="conditional_independence.partial_correlation_suffstat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_suffstat</span></code></a>(samples[, invert])</p></td>
 <td><p>Return the sufficient statistics for partial correlation testing.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_test</span></code></a>(suffstat, i, j[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/conditional_independence.partial_correlation_test.html#conditional_independence.partial_correlation_test" title="conditional_independence.partial_correlation_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_correlation_test</span></code></a>(suffstat, i, j[, …])</p></td>
 <td><p>Test the null hypothesis that i and j are conditionally independent given <code class="docutils literal notranslate"><span class="pre">cond_set</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation.html#conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation" title="conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_partial_correlation</span></code></a>(suffstat, i, j)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/conditional_independence.compute_partial_correlation.html#conditional_independence.compute_partial_correlation" title="conditional_independence.compute_partial_correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_partial_correlation</span></code></a>(suffstat, i, j)</p></td>
 <td><p>Compute the partial correlation between i and j given <code class="docutils literal notranslate"><span class="pre">cond_set</span></code>.</p></td>
 </tr>
 </tbody>
@@ -206,6 +205,20 @@
 </div>
 <div class="section" id="non-parametric-tests">
 <h2>Non-Parametric Tests<a class="headerlink" href="#non-parametric-tests" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/conditional_independence.hsic_test.html#conditional_independence.hsic_test" title="conditional_independence.hsic_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hsic_test</span></code></a>(suffstat, i, j[, cond_set, alpha])</p></td>
+<td><p>Test for (conditional) independence using the Hilbert-Schmidt Information Criterion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/conditional_independence.kci_test.html#conditional_independence.kci_test" title="conditional_independence.kci_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kci_test</span></code></a>(suffstat, i, j[, cond_set, width, …])</p></td>
+<td><p>TODO</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -214,29 +227,37 @@
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html" class="btn btn-neutral float-right" title="conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to conditional_independence’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="generated/conditional_independence.partial_correlation_suffstat.html" class="btn btn-neutral float-right" title="conditional_independence.partial_correlation_suffstat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to conditional_independence’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Chandler Squires.
+        
+        &copy; Copyright 2021, Chandler Squires
 
     </p>
   </div>
     
     
     
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 

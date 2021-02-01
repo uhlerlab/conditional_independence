@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>conditional_independence.ci_tests.parametric.partial_correlation_test &mdash; conditional_independence  documentation</title>
   
@@ -16,10 +16,7 @@
 
   
   
-
   
-  
-
   
 
   
@@ -51,7 +48,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home"> conditional_independence
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> conditional_independence
           
 
           
@@ -125,8 +122,6 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -169,7 +164,7 @@
     <span class="k">return</span> <span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="partial_correlation_suffstat"><a class="viewcode-back" href="../../../../ci_tests/generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat">[docs]</a><span class="k">def</span> <span class="nf">partial_correlation_suffstat</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="partial_correlation_suffstat"><a class="viewcode-back" href="../../../../ci_tests/generated/conditional_independence.partial_correlation_suffstat.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_suffstat">[docs]</a><span class="k">def</span> <span class="nf">partial_correlation_suffstat</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the sufficient statistics for partial correlation testing.</span>
 
@@ -200,7 +195,7 @@
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="n">V</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="compute_partial_correlation"><a class="viewcode-back" href="../../../../ci_tests/generated/conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation.html#conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation">[docs]</a><span class="k">def</span> <span class="nf">compute_partial_correlation</span><span class="p">(</span><span class="n">suffstat</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cond_set</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="compute_partial_correlation"><a class="viewcode-back" href="../../../../ci_tests/generated/conditional_independence.compute_partial_correlation.html#conditional_independence.ci_tests.parametric.partial_correlation_test.compute_partial_correlation">[docs]</a><span class="k">def</span> <span class="nf">compute_partial_correlation</span><span class="p">(</span><span class="n">suffstat</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cond_set</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the partial correlation between i and j given ``cond_set``.</span>
 
@@ -286,7 +281,7 @@
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="n">samples</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="partial_correlation_test"><a class="viewcode-back" href="../../../../ci_tests/generated/conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test">[docs]</a><span class="k">def</span> <span class="nf">partial_correlation_test</span><span class="p">(</span><span class="n">suffstat</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cond_set</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="partial_correlation_test"><a class="viewcode-back" href="../../../../ci_tests/generated/conditional_independence.partial_correlation_test.html#conditional_independence.ci_tests.parametric.partial_correlation_test.partial_correlation_test">[docs]</a><span class="k">def</span> <span class="nf">partial_correlation_test</span><span class="p">(</span><span class="n">suffstat</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cond_set</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Test the null hypothesis that i and j are conditionally independent given ``cond_set``.</span>
 
@@ -356,25 +351,28 @@
            
           </div>
           <footer>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Chandler Squires.
+        
+        &copy; Copyright 2021, Chandler Squires
 
     </p>
   </div>
     
     
     
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conditional_independence.hsic_invariance_test &mdash; conditional_independence  documentation</title>
+  <title>conditional_independence.partial_correlation_suffstat &mdash; conditional_independence  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="conditional_independence.kci_invariance_test" href="conditional_independence.kci_invariance_test.html" />
-    <link rel="prev" title="conditional_independence.gauss_invariance_test" href="conditional_independence.gauss_invariance_test.html" /> 
+    <link rel="next" title="conditional_independence.partial_correlation_test" href="conditional_independence.partial_correlation_test.html" />
+    <link rel="prev" title="Conditional Independence Tests" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,17 +82,18 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../ci_tests/index.html">Conditional Independence Tests</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Conditional Invariance Tests</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Conditional Independence Tests</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#testers">Testers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#parametric-invariance-tests">Parametric Invariance Tests</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#non-parametric-invariance-tests">Non-Parametric Invariance Tests</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">conditional_independence.hsic_invariance_test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="conditional_independence.kci_invariance_test.html">conditional_independence.kci_invariance_test</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#parametric-tests">Parametric Tests</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">conditional_independence.partial_correlation_suffstat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conditional_independence.partial_correlation_test.html">conditional_independence.partial_correlation_test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conditional_independence.compute_partial_correlation.html">conditional_independence.compute_partial_correlation</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#non-parametric-tests">Non-Parametric Tests</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../invariance_tests/index.html">Conditional Invariance Tests</a></li>
 </ul>
 
             
@@ -139,15 +140,15 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../index.html">Conditional Invariance Tests</a> &raquo;</li>
+          <li><a href="../index.html">Conditional Independence Tests</a> &raquo;</li>
         
-      <li>conditional_independence.hsic_invariance_test</li>
+      <li>conditional_independence.partial_correlation_suffstat</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/invariance_tests/generated/conditional_independence.hsic_invariance_test.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ci_tests/generated/conditional_independence.partial_correlation_suffstat.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -160,19 +161,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="conditional-independence-hsic-invariance-test">
-<h1>conditional_independence.hsic_invariance_test<a class="headerlink" href="#conditional-independence-hsic-invariance-test" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="conditional-independence-partial-correlation-suffstat">
+<h1>conditional_independence.partial_correlation_suffstat<a class="headerlink" href="#conditional-independence-partial-correlation-suffstat" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="conditional_independence.hsic_invariance_test">
-<code class="sig-prename descclassname">conditional_independence.</code><code class="sig-name descname">hsic_invariance_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">suffstat</span></em>, <em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">i</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">cond_set</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.05</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/conditional_independence/invariance_tests/nonparametric/hsic.html#hsic_invariance_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.hsic_invariance_test" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO</p>
+<dt id="conditional_independence.partial_correlation_suffstat">
+<code class="sig-prename descclassname">conditional_independence.</code><code class="sig-name descname">partial_correlation_suffstat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">samples</span></em>, <em class="sig-param"><span class="n">invert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="../../_modules/conditional_independence/ci_tests/parametric/partial_correlation_test.html#partial_correlation_suffstat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conditional_independence.partial_correlation_suffstat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sufficient statistics for partial correlation testing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>TODO</strong> – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>samples</strong> – (n x p) matrix, where n is the number of samples and p is the number of variables.</p></li>
+<li><p><strong>invert</strong> – if True, compute the inverse correlation matrix, and normalize it into the partial correlation matrix. This
+will generally speed up the gauss_ci_test if large conditioning sets are used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary of sufficient statistics</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<p>TODO</p>
 </dd></dl>
 
 </div>
@@ -185,10 +194,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="conditional_independence.kci_invariance_test.html" class="btn btn-neutral float-right" title="conditional_independence.kci_invariance_test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="conditional_independence.partial_correlation_test.html" class="btn btn-neutral float-right" title="conditional_independence.partial_correlation_test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="conditional_independence.gauss_invariance_test.html" class="btn btn-neutral float-left" title="conditional_independence.gauss_invariance_test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Conditional Independence Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -18,7 +18,7 @@ Testers
 Parametric Tests
 ================
 
-.. currentmodule:: conditional_independence.ci_tests.parametric.partial_correlation_test
+.. currentmodule:: conditional_independence
 .. autosummary::
    :toctree: generated
 
@@ -30,3 +30,9 @@ Parametric Tests
 Non-Parametric Tests
 ====================
 
+.. currentmodule:: conditional_independence
+.. autosummary::
+   :toctree: generated
+
+   hsic_test
+   kci_test
