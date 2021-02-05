@@ -1,3 +1,4 @@
+[![PyPI version](https://badge.fury.io/py/conditional_independence.svg)](https://badge.fury.io/py/conditional_independence)
 [![Build Status](https://travis-ci.com/uhlerlab/conditional_independence.svg?branch=main)](https://travis-ci.com/uhlerlab/conditional_independence)
 [![codecov](https://codecov.io/gh/uhlerlab/conditional_independence/branch/main/graph/badge.svg?token=TC78IEMINI)](https://codecov.io/gh/uhlerlab/conditional_independence)
 
