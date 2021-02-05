@@ -6,7 +6,6 @@ from numpy.linalg import inv, pinv
 
 
 __all__ = [
-    "partial_correlation_suffstat",
     "partial_correlation_test",
     "compute_partial_correlation"
 ]
@@ -14,37 +13,6 @@ __all__ = [
 
 def numba_inv(A):
     return inv(A)
-
-
-def partial_correlation_suffstat(samples, invert=True) -> Dict:
-    """
-    Return the sufficient statistics for partial correlation testing.
-
-    Parameters
-    ----------
-    samples:
-        (n x p) matrix, where n is the number of samples and p is the number of variables.
-    invert:
-        if True, compute the inverse correlation matrix, and normalize it into the partial correlation matrix. This
-        will generally speed up the gauss_ci_test if large conditioning sets are used.
-
-    Returns
-    -------
-    dict
-        dictionary of sufficient statistics
-    """
-    n, p = samples.shape
-    S = cov(samples, rowvar=False)  # sample covariance matrix
-    mu = mean(samples, axis=0)
-    # TODO: NaN when variable is deterministic. Replace w/ 1 and 0?
-    C = corrcoef(samples, rowvar=False)  # sample correlation matrix
-    V = samples.T @ samples
-    if invert:
-        K = pinv(C)
-        P = pinv(S)  # sample precision (inverse covariance) matrix
-        rho = K/sqrt(diag(K))/sqrt(diag(K))[:, None]  # sample partial correlation matrix
-        return dict(P=P, S=S, C=C, n=n, K=K, rho=rho, mu=mu, V=V)
-    return dict(S=S, C=C, n=n, mu=mu, V=V)
 
 
 def compute_partial_correlation(suffstat, i, j, cond_set=None):
@@ -190,6 +158,7 @@ def partial_correlation_test(suffstat: Dict, i, j, cond_set=None, alpha=None):
 
 if __name__ == '__main__':
     import numpy as np
+    from conditional_independence import partial_correlation_suffstat
 
     x = np.random.normal(size=(100, 3))
     s = partial_correlation_suffstat(x)

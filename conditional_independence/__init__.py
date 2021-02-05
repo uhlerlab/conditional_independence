@@ -16,3 +16,4 @@ Released under the 3-Clause BSD license::
 
 from .ci_tests import *
 from .invariance_tests import *
+from .suffstats import *
