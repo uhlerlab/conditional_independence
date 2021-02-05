@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='conditional_independence',
-    version='0.1a.3',
+    version='0.1a.4',
     description='Parametric and non-parametric conditional independence tests.',
     long_description='',
     author='Chandler Squires',
