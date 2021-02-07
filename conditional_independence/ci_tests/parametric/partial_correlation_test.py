@@ -155,14 +155,3 @@ def partial_correlation_test(suffstat: Dict, i, j, cond_set=None, alpha=None):
 #     def __init__(self, suffstat: Dict, track_times=False, detailed=False, **kwargs):
 #         MemoizedCI_Tester.__init__(self, partial_correlation_test, suffstat, track_times=track_times, detailed=detailed)
 
-
-if __name__ == '__main__':
-    import numpy as np
-    from conditional_independence import partial_correlation_suffstat
-
-    x = np.random.normal(size=(100, 3))
-    s = partial_correlation_suffstat(x)
-    res = partial_correlation_test(s, 0, 1)
-    print(res)
-
-

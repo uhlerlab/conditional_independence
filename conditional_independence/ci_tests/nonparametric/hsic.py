@@ -115,18 +115,3 @@ def hsic_test(
         return hsic_test_vector(residuals_i, residuals_j, alpha=alpha)
 
 
-if __name__ == '__main__':
-    import numpy as np
-    from line_profiler import LineProfiler
-
-    lp = LineProfiler()
-
-    lp.add_function(hsic_test_vector)
-    lp.add_function(center_fast_mutate)
-    for _ in range(10):
-        X1 = np.random.laplace(0, 1, size=1000)
-        X2 = np.random.laplace(0, 1, size=1000)
-        lp.runcall(hsic_test_vector, X1, X2)
-    lp.print_stats()
-
-
