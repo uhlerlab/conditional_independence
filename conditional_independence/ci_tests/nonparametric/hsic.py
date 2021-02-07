@@ -33,6 +33,7 @@ def hsic_test_vector(
     -------
 
     """
+    alpha_test = alpha
     if x.ndim == 1:
         x = x.reshape((len(x), 1))
     if y.ndim == 1:
@@ -72,7 +73,7 @@ def hsic_test_vector(
     return dict(
         statistic=statistic,
         p_value=p_value,
-        reject=p_value < alpha,
+        reject=p_value < alpha_test,
         mean_approx=mean_approx,
         var_approx=var_approx
     )
